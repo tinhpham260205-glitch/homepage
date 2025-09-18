@@ -6,6 +6,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ensure Leaflet map background is bright while tiles load */
+.leaflet-container { background: #ffffff !important; }
+
 @layer base {
   /**
    * Tailwind CSS theme
