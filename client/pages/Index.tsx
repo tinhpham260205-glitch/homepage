@@ -8,6 +8,8 @@ import {
   MapPin,
   Calendar,
   ChevronRight,
+  ChevronDown,
+  Search,
   FileText,
   Image as ImageIcon,
   CheckCircle2,
@@ -45,7 +47,7 @@ export default function Index() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    alert(`Đặt xe thành công!\nHình thức: ${mode}\nTừ: ${pickup}\nĐến: ${dropoff}\nNgày: ${date}\nLoại xe: ${type}`);
+    alert(`Đặt xe thành công!\nHình thức: ${mode}\nT��: ${pickup}\nĐến: ${dropoff}\nNgày: ${date}\nLoại xe: ${type}`);
   }
 
   const cars = [
@@ -237,43 +239,69 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Booking: Map + List */}
+      {/* Booking: Map + List (redesigned) */}
       <section className="bg-gradient-to-b from-muted/60 to-transparent py-16 sm:py-24">
         <div className="container">
           <SectionTitle eyebrow="Đặt xe" title="Tìm điểm thuê trên bản đồ & xe có sẵn" />
-          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-2 overflow-hidden rounded-2xl border">
-              <div className="aspect-[16/10] bg-[url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center" />
+
+          {/* Search + filters */}
+          <div className="mx-auto mt-8 max-w-6xl">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <label className="relative col-span-1 sm:col-span-2 lg:col-span-4">
+                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/50" />
+                <input
+                  placeholder="Tìm kiếm"
+                  className="w-full rounded-lg border bg-background pl-9 pr-3 py-2.5 shadow-sm"
+                />
+              </label>
+              {[
+                { label: "Loại xe" },
+                { label: "Giá" },
+                { label: "Dung lượng pin" },
+              ].map((f) => (
+                <button
+                  key={f.label}
+                  className="inline-flex items-center justify-between gap-2 rounded-lg border bg-card px-3 py-2 text-sm shadow-sm hover:bg-muted"
+                >
+                  {f.label}
+                  <ChevronDown className="h-4 w-4 text-foreground/60" />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="mx-auto mt-6 grid max-w-6xl grid-cols-1 gap-6 lg:grid-cols-3">
+            {/* Map card */}
+            <div className="lg:col-span-2 overflow-hidden rounded-2xl border bg-card">
+              <div className="relative aspect-[16/10] bg-[url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center">
+                {/* Map markers */}
+                <span className="absolute left-[18%] top-[38%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/20 ring-2 ring-emerald-500" />
+                <span className="absolute left-[52%] top-[48%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/20 ring-2 ring-emerald-500" />
+                <span className="absolute left-[35%] top-[65%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/20 ring-2 ring-emerald-500" />
+                <span className="absolute left-[74%] top-[62%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/20 ring-2 ring-emerald-500" />
+              </div>
               <div className="border-t p-4">
-                <div className="flex items-center gap-2 text-sm text-foreground/70"><MapPin className="h-4 w-4" /> Gợi ý điểm gần bạn: Thủ Đức, Q1, Q7, Cầu Giấy</div>
+                <div className="flex items-center gap-2 text-sm text-foreground/70"><MapPin className="h-4 w-4" /> Gợi ý địa điểm gần bạn: THH ĐÔ, Dịch Vọng Hậu</div>
               </div>
             </div>
+
+            {/* Car list */}
             <div className="grid content-start gap-4">
               {cars.map((c) => (
-                <div key={c.name} className="group overflow-hidden rounded-xl border bg-card shadow-sm">
-                  <div className="aspect-[16/9] overflow-hidden bg-muted">
-                    <img src={c.img} alt={c.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center justify-between gap-2">
-                      <div>
-                        <h3 className="text-base font-semibold">{c.name}</h3>
-                        <p className="text-xs text-foreground/60">{c.location}</p>
-                      </div>
-                      <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[11px] font-medium text-emerald-700">{c.tag}</span>
+                <div key={c.name} className="flex items-center justify-between gap-4 rounded-xl border bg-card p-4 shadow-sm">
+                  <div className="min-w-0">
+                    <h3 className="truncate text-base font-semibold">{c.name}</h3>
+                    <p className="text-xs text-foreground/60">{c.tag}</p>
+                    <div className="mt-2 flex items-center gap-2 text-xs font-medium text-emerald-700">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-1">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> {c.battery}%
+                      </span>
                     </div>
-                    <div className="mt-3 flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2 text-foreground/70">
-                        <BatteryCharging className="h-4 w-4 text-emerald-600" /> {c.battery}%
-                      </div>
-                      <span className="font-semibold">{c.price}</span>
-                    </div>
-                    <button className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-md border bg-background px-3 py-2 text-sm font-medium hover:bg-muted">
-                      Chọn xe này
-                    </button>
                   </div>
+                  <img src={c.img} alt={c.name} className="h-16 w-28 rounded-lg object-cover" />
                 </div>
               ))}
+              <div className="mt-2 self-end text-right text-sm font-semibold">1.400.000 – 1.600.000 đ/ngày</div>
             </div>
           </div>
         </div>
