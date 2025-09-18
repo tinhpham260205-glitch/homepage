@@ -1,16 +1,11 @@
 import { useEffect, useRef } from "react";
 import L, { Map as LeafletMap, Marker } from "leaflet";
-import "leaflet/dist/leaflet.css";
 
-// Fix default icon paths for Vite
-import markerIcon2xUrl from "leaflet/dist/images/marker-icon-2x.png";
-import markerIconUrl from "leaflet/dist/images/marker-icon.png";
-import markerShadowUrl from "leaflet/dist/images/marker-shadow.png";
-
+// Use CDN assets to avoid dev-server fs allow issues
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2xUrl,
-  iconUrl: markerIconUrl,
-  shadowUrl: markerShadowUrl,
+  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
 export interface MapPoint {
