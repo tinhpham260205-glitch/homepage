@@ -19,6 +19,7 @@ import {
   FileSignature,
   Handshake,
   Camera,
+  ReceiptText,
 } from "lucide-react";
 import {
   ResponsiveContainer,
@@ -191,7 +192,7 @@ export default function Index() {
       {/* Registration & Verification */}
       <section className="container py-16 sm:py-24">
         <SectionTitle
-          eyebrow="Đăng ký & xác thực"
+          eyebrow="Đăng ký & x��c thực"
           title="Tạo tài khoản trong 1 phút"
           desc="Tải lên giấy phép lái xe và CMND/CCCD. Có thể xác thực nhanh tại điểm thuê với nhân viên."
         />
@@ -371,36 +372,53 @@ export default function Index() {
         <div className="container">
           <SectionTitle eyebrow="Trả xe" title="Trả xe đúng điểm và hoàn tất thanh toán" />
 
-          <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-2xl border bg-card">
-            <ul className="divide-y">
-              <li className="flex items-start gap-4 p-5 sm:p-6">
-                <span className="mt-1 grid h-7 w-7 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">01</span>
-                <div className="flex-1">
-                  <h3 className="flex items-center gap-2 text-base font-semibold">
-                    <MapPin className="h-5 w-5 text-emerald-600" /> Trả xe đúng điểm thuê
-                  </h3>
-                  <p className="mt-1 text-sm text-foreground/70">Trả xe tại đúng điểm đã thuê để tránh phụ phí.</p>
+          <div className="mx-auto mt-8 max-w-4xl rounded-2xl border bg-card p-4 sm:p-6">
+            <ol className="relative mx-1 space-y-6 sm:space-y-8 before:absolute before:left-4 before:top-0 before:bottom-0 before:w-px before:bg-emerald-100">
+              <li className="relative pl-10">
+                <span className="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">01</span>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
+                    <h3 className="flex items-center gap-2 text-base font-semibold">
+                      <MapPin className="h-5 w-5 text-emerald-600" /> Trả xe đúng điểm thuê
+                    </h3>
+                    <p className="mt-1 text-sm text-foreground/70">Trả xe tại đúng điểm đã thuê để tránh phụ phí.</p>
+                  </div>
                 </div>
               </li>
-              <li className="flex items-start gap-4 p-5 sm:p-6">
-                <span className="mt-1 grid h-7 w-7 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">02</span>
-                <div className="flex-1">
-                  <h3 className="flex items-center gap-2 text-base font-semibold">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-600" /> Kiểm tra & xác nhận tình trạng
-                  </h3>
-                  <p className="mt-1 text-sm text-foreground/70">Nhân viên kiểm tra nhanh, bạn ký xác nhận biên bản bàn giao.</p>
+              <li className="relative pl-10">
+                <span className="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">02</span>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
+                    <h3 className="flex items-center gap-2 text-base font-semibold">
+                      <CheckCircle2 className="h-5 w-5 text-emerald-600" /> Kiểm tra & xác nhận tình trạng
+                    </h3>
+                    <p className="mt-1 text-sm text-foreground/70">Nhân viên kiểm tra nhanh, bạn ký xác nhận biên bản bàn giao.</p>
+                  </div>
                 </div>
               </li>
-              <li className="flex items-start gap-4 p-5 sm:p-6">
-                <span className="mt-1 grid h-7 w-7 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">03</span>
-                <div className="flex-1">
-                  <h3 className="flex items-center gap-2 text-base font-semibold">
-                    <CreditCard className="h-5 w-5 text-emerald-600" /> Hoàn tất thanh toán
-                  </h3>
-                  <p className="mt-1 text-sm text-foreground/70">Thanh toán chi phí phát sinh (nếu có) trực tiếp tại quầy hoặc trong ứng dụng.</p>
+              <li className="relative pl-10">
+                <span className="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">03</span>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
+                    <h3 className="flex items-center gap-2 text-base font-semibold">
+                      <CreditCard className="h-5 w-5 text-emerald-600" /> Hoàn tất thanh toán
+                    </h3>
+                    <p className="mt-1 text-sm text-foreground/70">Thanh toán chi phí phát sinh (nếu có) trực tiếp tại quầy hoặc trong ứng dụng.</p>
+                  </div>
                 </div>
               </li>
-            </ul>
+              <li className="relative pl-10">
+                <span className="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">04</span>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
+                    <h3 className="flex items-center gap-2 text-base font-semibold">
+                      <ReceiptText className="h-5 w-5 text-emerald-600" /> Nhận biên lai / hoàn tất hợp đồng
+                    </h3>
+                    <p className="mt-1 text-sm text-foreground/70">Nhận biên lai điện tử qua email/ứng dụng để lưu trữ minh bạch.</p>
+                  </div>
+                </div>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
