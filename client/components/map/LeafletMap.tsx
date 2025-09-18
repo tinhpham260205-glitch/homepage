@@ -31,10 +31,13 @@ export default function LeafletMap({
   useEffect(() => {
     if (!ref.current || mapRef.current) return;
     const map = L.map(ref.current, { zoomControl: true }).setView(center, zoom);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/voyager/{z}/{x}/{y}{r}.png", {
+      subdomains: ["a", "b", "c", "d"],
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 19,
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, © <a href="https://carto.com/attributions">CARTO</a>',
+      maxZoom: 20,
+      noWrap: true,
+      detectRetina: true,
     }).addTo(map);
     mapRef.current = map;
     return () => {
