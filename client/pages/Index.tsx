@@ -319,69 +319,50 @@ export default function Index() {
       {/* Pickup (Nhận xe) */}
       <section className="container py-16 sm:py-24">
         <SectionTitle eyebrow="Nhận xe" title="Check-in, ký hợp đồng, bàn giao minh bạch" />
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {/* QR Check-in card */}
-          <div className="relative overflow-hidden rounded-2xl border bg-card p-6 shadow-sm">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-700">
-                  <QrCode className="h-4 w-4" /> Check-in nhanh
-                </div>
-                <h3 className="mt-3 text-lg font-semibold">Quét mã tại quầy hoặc trên ứng dụng</h3>
-                <p className="mt-2 text-sm text-foreground/70">Mã đặt xe: <span className="font-medium">EVR-2025-1234</span></p>
-              </div>
-              <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=EVR-2025-1234"
-                alt="QR Check-in"
-                className="h-28 w-28 rounded-md border bg-white p-1"
-              />
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-3 text-xs text-foreground/70">
-              <div className="rounded-md border bg-background px-3 py-2">Mang theo CCCD/GPLX</div>
-              <div className="rounded-md border bg-background px-3 py-2">Đến đúng giờ hẹn</div>
-            </div>
-          </div>
 
-          {/* Steps */}
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="grid h-10 w-10 place-items-center rounded-full bg-emerald-500/10 text-emerald-700">
-                <FileSignature className="h-5 w-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold">Ký hợp đồng điện tử</h3>
-                <p className="text-sm text-foreground/70">Xem điều khoản và ký trên điện thoại hoặc giấy tại chỗ.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="grid h-10 w-10 place-items-center rounded-full bg-emerald-500/10 text-emerald-700">
-                <Camera className="h-5 w-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold">Chụp ảnh tình trạng xe</h3>
-                <p className="text-sm text-foreground/70">Lưu hồ sơ 4 góc, nội thất và mức pin hiện tại.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-2xl border bg-card p-6 shadow-sm md:col-span-2">
-            <div className="flex items-start gap-3">
-              <div className="grid h-10 w-10 place-items-center rounded-full bg-emerald-500/10 text-emerald-700">
-                <Handshake className="h-5 w-5" />
-              </div>
+        <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border bg-card">
+          <ul className="divide-y">
+            <li className="flex items-start gap-4 p-5 sm:p-6">
+              <span className="mt-1 grid h-7 w-7 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">01</span>
               <div className="flex-1">
-                <h3 className="text-base font-semibold">Bàn giao cùng nhân viên</h3>
-                <p className="text-sm text-foreground/70">Xác nhận biên bản bàn giao và nhận chìa khóa. Mọi chi tiết được minh bạch trên hợp đồng.</p>
-                <div className="mt-3 grid grid-cols-2 gap-3 text-xs">
-                  <div className="rounded-md border bg-background px-3 py-2">Biên bản điện tử</div>
-                  <div className="rounded-md border bg-background px-3 py-2">Hỗ trợ 24/7</div>
-                </div>
+                <h3 className="flex items-center gap-2 text-base font-semibold">
+                  <QrCode className="h-5 w-5 text-emerald-600" /> Check-in tại quầy/ứng dụng
+                </h3>
+                <p className="mt-1 text-sm text-foreground/70">Quét mã đặt xe để xác nhận thông tin tài khoản.</p>
               </div>
-            </div>
-          </div>
+              <Car className="hidden h-8 w-8 text-emerald-600 sm:block" />
+            </li>
+
+            <li className="flex items-start gap-4 p-5 sm:p-6">
+              <span className="mt-1 grid h-7 w-7 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">02</span>
+              <div className="flex-1">
+                <h3 className="flex items-center gap-2 text-base font-semibold">
+                  <FileSignature className="h-5 w-5 text-emerald-600" /> Ký hợp đồng điện tử
+                </h3>
+                <p className="mt-1 text-sm text-foreground/70">Xem kỹ điều khoản, ký nhanh trên điện thoại hoặc máy tính bảng.</p>
+              </div>
+            </li>
+
+            <li className="flex items-start gap-4 p-5 sm:p-6">
+              <span className="mt-1 grid h-7 w-7 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">03</span>
+              <div className="flex-1">
+                <h3 className="flex items-center gap-2 text-base font-semibold">
+                  <Handshake className="h-5 w-5 text-emerald-600" /> Bàn giao cùng nhân viên
+                </h3>
+                <p className="mt-1 text-sm text-foreground/70">Kiểm tra tình trạng xe và chụp ảnh trước khi nhận khóa.</p>
+              </div>
+            </li>
+
+            <li className="flex items-start gap-4 p-5 sm:p-6">
+              <span className="mt-1 grid h-7 w-7 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-white">04</span>
+              <div className="flex-1">
+                <h3 className="flex items-center gap-2 text-base font-semibold">
+                  <MapPin className="h-5 w-5 text-emerald-600" /> Trả xe đúng điểm và hoàn tất thanh toán
+                </h3>
+                <p className="mt-1 text-sm text-foreground/70">Trả xe tại đúng điểm đã thuê để tránh phụ phí.</p>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
 
