@@ -15,6 +15,10 @@ import {
   CheckCircle2,
   CreditCard,
   Clock3,
+  QrCode,
+  FileSignature,
+  Handshake,
+  Camera,
 } from "lucide-react";
 import {
   ResponsiveContainer,
@@ -316,17 +320,68 @@ export default function Index() {
       <section className="container py-16 sm:py-24">
         <SectionTitle eyebrow="Nhận xe" title="Check-in, ký hợp đồng, bàn giao minh bạch" />
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {[
-            { title: "Check-in tại quầy/ứng dụng", desc: "Quét mã đặt xe và xác thực tài khoản để bắt đầu." },
-            { title: "Ký hợp đồng điện tử", desc: "Xem chi tiết điều khoản, ký nhanh trên điện thoại hoặc giấy tại chỗ." },
-            { title: "Bàn giao cùng nhân viên", desc: "Kiểm tra tình trạng xe và chụp ảnh lưu hồ sơ trước khi nhận chìa khóa." },
-          ].map((s, i) => (
-            <div key={i} className="relative rounded-2xl border bg-card p-6">
-              <span className="absolute -top-3 left-6 rounded-full bg-primary px-2 py-1 text-xs font-semibold text-primary-foreground shadow">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-2 text-lg font-semibold">{s.title}</h3>
-              <p className="mt-2 text-sm text-foreground/70">{s.desc}</p>
+          {/* QR Check-in card */}
+          <div className="relative overflow-hidden rounded-2xl border bg-card p-6 shadow-sm">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-700">
+                  <QrCode className="h-4 w-4" /> Check-in nhanh
+                </div>
+                <h3 className="mt-3 text-lg font-semibold">Quét mã tại quầy hoặc trên ứng dụng</h3>
+                <p className="mt-2 text-sm text-foreground/70">Mã đặt xe: <span className="font-medium">EVR-2025-1234</span></p>
+              </div>
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=EVR-2025-1234"
+                alt="QR Check-in"
+                className="h-28 w-28 rounded-md border bg-white p-1"
+              />
             </div>
-          ))}
+            <div className="mt-4 grid grid-cols-2 gap-3 text-xs text-foreground/70">
+              <div className="rounded-md border bg-background px-3 py-2">Mang theo CCCD/GPLX</div>
+              <div className="rounded-md border bg-background px-3 py-2">Đến đúng giờ hẹn</div>
+            </div>
+          </div>
+
+          {/* Steps */}
+          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-full bg-emerald-500/10 text-emerald-700">
+                <FileSignature className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold">Ký hợp đồng điện tử</h3>
+                <p className="text-sm text-foreground/70">Xem điều khoản và ký trên điện thoại hoặc giấy tại chỗ.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-full bg-emerald-500/10 text-emerald-700">
+                <Camera className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold">Chụp ảnh tình trạng xe</h3>
+                <p className="text-sm text-foreground/70">Lưu hồ sơ 4 góc, nội thất và mức pin hiện tại.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border bg-card p-6 shadow-sm md:col-span-2">
+            <div className="flex items-start gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-full bg-emerald-500/10 text-emerald-700">
+                <Handshake className="h-5 w-5" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-base font-semibold">Bàn giao cùng nhân viên</h3>
+                <p className="text-sm text-foreground/70">Xác nhận biên bản bàn giao và nhận chìa khóa. Mọi chi tiết được minh bạch trên hợp đồng.</p>
+                <div className="mt-3 grid grid-cols-2 gap-3 text-xs">
+                  <div className="rounded-md border bg-background px-3 py-2">Biên bản điện tử</div>
+                  <div className="rounded-md border bg-background px-3 py-2">Hỗ trợ 24/7</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -347,7 +402,7 @@ export default function Index() {
         <SectionTitle
           eyebrow="Lịch sử & phân tích cá nhân"
           title="Theo dõi hành trình và thói quen thuê"
-          desc="Xem lại các chuyến trước, chi phí và thời điểm thường thuê (giờ cao/thấp điểm)."
+          desc="Xem lại các chuyến trước, chi phí và thời đi��m thường thuê (giờ cao/thấp điểm)."
         />
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
           <div className="rounded-2xl border bg-card p-6 shadow-sm md:col-span-2">
