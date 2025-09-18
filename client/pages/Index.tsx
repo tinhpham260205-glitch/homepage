@@ -25,6 +25,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
+import LeafletMap from "@/components/map/LeafletMap";
 
 function SectionTitle({ eyebrow, title, desc }: { eyebrow: string; title: string; desc?: string }) {
   return (
@@ -345,7 +346,7 @@ export default function Index() {
       <section className="container py-16 sm:py-24">
         <SectionTitle
           eyebrow="Lịch sử & phân tích cá nhân"
-          title="Theo dõi hành trình và th��i quen thuê"
+          title="Theo dõi hành trình và thói quen thuê"
           desc="Xem lại các chuyến trước, chi phí và thời điểm thường thuê (giờ cao/thấp điểm)."
         />
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
