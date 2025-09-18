@@ -273,13 +273,17 @@ export default function Index() {
           <div className="mx-auto mt-6 grid max-w-6xl grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Map card */}
             <div className="lg:col-span-2 overflow-hidden rounded-2xl border bg-card">
-              <div className="relative aspect-[16/10] bg-[url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center">
-                {/* Map markers */}
-                <span className="absolute left-[18%] top-[38%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/20 ring-2 ring-emerald-500" />
-                <span className="absolute left-[52%] top-[48%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/20 ring-2 ring-emerald-500" />
-                <span className="absolute left-[35%] top-[65%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/20 ring-2 ring-emerald-500" />
-                <span className="absolute left-[74%] top-[62%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/20 ring-2 ring-emerald-500" />
-              </div>
+              <LeafletMap
+                className="aspect-[16/10]"
+                points={[
+                  { name: "Dịch Vọng Hậu", position: [21.0289, 105.7904] },
+                  { name: "Cầu Giấy", position: [21.032, 105.801] },
+                  { name: "Trung Hoà", position: [21.0105, 105.8003] },
+                  { name: "Q1 TP.HCM", position: [10.776, 106.7009] },
+                ]}
+                center={[21.028511, 105.804817]}
+                zoom={12}
+              />
               <div className="border-t p-4">
                 <div className="flex items-center gap-2 text-sm text-foreground/70"><MapPin className="h-4 w-4" /> Gợi ý địa điểm gần bạn: THH ĐÔ, Dịch Vọng Hậu</div>
               </div>
@@ -341,7 +345,7 @@ export default function Index() {
       <section className="container py-16 sm:py-24">
         <SectionTitle
           eyebrow="Lịch sử & phân tích cá nhân"
-          title="Theo dõi hành trình và thói quen thuê"
+          title="Theo dõi hành trình và th��i quen thuê"
           desc="Xem lại các chuyến trước, chi phí và thời điểm thường thuê (giờ cao/thấp điểm)."
         />
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
