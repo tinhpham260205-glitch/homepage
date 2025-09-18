@@ -275,7 +275,7 @@ export default function Index() {
             {/* Map card */}
             <div className="lg:col-span-2 overflow-hidden rounded-2xl border bg-card">
               <LeafletMap
-                className="aspect-[16/10]"
+                className="aspect-[16/10] bg-white"
                 points={[
                   { name: "Dịch Vọng Hậu", position: [21.0289, 105.7904] },
                   { name: "Cầu Giấy", position: [21.032, 105.801] },
