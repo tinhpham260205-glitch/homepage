@@ -47,7 +47,7 @@ export default function Index() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    alert(`Đặt xe thành công!\nHình thức: ${mode}\nT��: ${pickup}\nĐến: ${dropoff}\nNgày: ${date}\nLoại xe: ${type}`);
+    alert(`Đặt xe thành công!\nHình thức: ${mode}\nTừ: ${pickup}\nĐến: ${dropoff}\nNgày: ${date}\nLoại xe: ${type}`);
   }
 
   const cars = [
@@ -340,7 +340,7 @@ export default function Index() {
       {/* History & Personal Analytics */}
       <section className="container py-16 sm:py-24">
         <SectionTitle
-          eyebrow="L���ch sử & phân tích cá nhân"
+          eyebrow="Lịch sử & phân tích cá nhân"
           title="Theo dõi hành trình và thói quen thuê"
           desc="Xem lại các chuyến trước, chi phí và thời điểm thường thuê (giờ cao/thấp điểm)."
         />
