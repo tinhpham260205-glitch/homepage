@@ -97,8 +97,8 @@ export default function Index() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute -top-40 -left-20 h-[32rem] w-[32rem] rounded-full bg-emerald-300/30 blur-3xl" />
-          <div className="absolute -bottom-32 -right-20 h-[28rem] w-[28rem] rounded-full bg-teal-300/30 blur-3xl" />
+          <div className="absolute inset-0 bg-[url('https://cdn.builder.io/api/v1/image/assets%2F46bb69f0be4d4d71a56798a2d5095ae5%2F0a4ac515902c4ec4a61c247ea95f837b?format=webp&width=800')] bg-cover bg-center" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="container grid gap-10 py-16 md:grid-cols-2 md:gap-8 md:py-24 items-center">
           <div>
@@ -106,13 +106,13 @@ export default function Index() {
               <Zap className="h-3.5 w-3.5" />
               Thuê ô tô điện dễ như gọi đồ ăn
             </div>
-            <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
+            <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
               Thuê xe ô tô điện tiện lợi, xanh và thông minh
             </h1>
-            <p className="mt-4 text-foreground/70">
+            <p className="mt-4 text-white/80">
               EVRide mang đến trải nghiệm di chuyển bền vững với đội xe điện hiện đại, giá minh bạch, đặt nhanh trong 30 giây.
             </p>
-            <ul className="mt-6 grid grid-cols-2 gap-2 text-sm text-foreground/70 sm:max-w-md">
+            <ul className="mt-6 grid grid-cols-2 gap-2 text-sm text-white/80 sm:max-w-md">
               <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-600" /> Bảo hiểm toàn diện</li>
               <li className="flex items-center gap-2"><BatteryCharging className="h-4 w-4 text-emerald-600" /> Sạc miễn phí</li>
               <li className="flex items-center gap-2"><Leaf className="h-4 w-4 text-emerald-600" /> Không khí sạch</li>
@@ -264,7 +264,7 @@ export default function Index() {
 
       {/* Pickup (Nhận xe) */}
       <section className="container py-16 sm:py-24">
-        <SectionTitle eyebrow="Nh��n xe" title="Check-in, ký hợp đồng, bàn giao minh bạch" />
+        <SectionTitle eyebrow="Nhận xe" title="Check-in, ký hợp đồng, bàn giao minh bạch" />
 
         <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border bg-card">
           <ul className="divide-y">
