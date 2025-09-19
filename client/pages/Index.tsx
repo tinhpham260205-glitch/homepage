@@ -95,7 +95,7 @@ export default function Index() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden min-h-[70vh] md:min-h-[80vh] flex items-center">
         <div className="absolute inset-0 -z-10">
           <img
             src="https://i.postimg.cc/hP8Dt7gf/Chat-GPT-Image-11-18-03-19-thg-9-2025.png"
@@ -114,7 +114,7 @@ export default function Index() {
               Thuê xe ô tô điện tiện lợi, xanh và thông minh
             </h1>
             <p className="mt-4 text-white/80">
-              EVRide mang đến trải nghiệm di chuyển bền vững với đội xe điện hiện đại, giá minh b��ch, đặt nhanh trong 30 giây.
+              EVRide mang đến trải nghiệm di chuyển bền vững với đội xe điện hiện đại, giá minh bạch, đặt nhanh trong 30 giây.
             </p>
             <ul className="mt-6 grid grid-cols-2 gap-2 text-sm text-white/80 sm:max-w-md">
               <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-600" /> Bảo hiểm toàn diện</li>
@@ -231,7 +231,7 @@ export default function Index() {
               <LeafletMap
                 className="aspect-[16/10] bg-white"
                 points={[
-                  { name: "D���ch Vọng Hậu", position: [21.0289, 105.7904] },
+                  { name: "Dịch Vọng Hậu", position: [21.0289, 105.7904] },
                   { name: "Cầu Giấy", position: [21.032, 105.801] },
                   { name: "Trung Hoà", position: [21.0105, 105.8003] },
                   { name: "Q1 TP.HCM", position: [10.776, 106.7009] },
