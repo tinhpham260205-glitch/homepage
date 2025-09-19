@@ -189,61 +189,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Registration & Verification */}
-      <section className="container py-16 sm:py-24">
-        <SectionTitle
-          eyebrow="Đăng ký & x��c thực"
-          title="Tạo tài khoản trong 1 phút"
-          desc="Tải lên giấy phép lái xe và CMND/CCCD. Có thể xác thực nhanh tại điểm thuê với nhân viên."
-        />
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
-            <h3 className="text-lg font-semibold">Thông tin cơ bản</h3>
-            <div className="mt-4 grid gap-4">
-              <input placeholder="Họ và tên" className="w-full rounded-md border bg-background px-3 py-2" />
-              <input type="tel" placeholder="Số điện thoại" className="w-full rounded-md border bg-background px-3 py-2" />
-              <input type="email" placeholder="Email" className="w-full rounded-md border bg-background px-3 py-2" />
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <label className="grid gap-1 text-sm">
-                  <span className="flex items-center gap-2 text-foreground/70"><FileText className="h-4 w-4" /> GPLX</span>
-                  <input
-                    type="file"
-                    accept="image/*,application/pdf"
-                    onChange={(e) => setLicense(e.target.files?.[0]?.name ?? "")}
-                    className="w-full rounded-md border bg-background px-3 py-2"
-                  />
-                  {license && <span className="text-xs text-foreground/60">Đã chọn: {license}</span>}
-                </label>
-                <label className="grid gap-1 text-sm">
-                  <span className="flex items-center gap-2 text-foreground/70"><ImageIcon className="h-4 w-4" /> CMND/CCCD</span>
-                  <input
-                    type="file"
-                    accept="image/*,application/pdf"
-                    onChange={(e) => setIdCard(e.target.files?.[0]?.name ?? "")}
-                    className="w-full rounded-md border bg-background px-3 py-2"
-                  />
-                  {idCard && <span className="text-xs text-foreground/60">Đã chọn: {idCard}</span>}
-                </label>
-              </div>
-              <button className="mt-2 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
-                Tạo tài khoản
-              </button>
-              <p className="text-xs text-foreground/60">Bảo mật thông tin theo chuẩn PCI DSS.</p>
-            </div>
-          </div>
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
-            <h3 className="text-lg font-semibold">Xác thực nhanh tại điểm</h3>
-            <ul className="mt-4 space-y-3 text-sm text-foreground/80">
-              <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-600" /> Mang theo bản gốc GPLX và CCCD</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-600" /> Xác minh danh tính với nhân viên</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-600" /> Hoàn tất trong 3 phút</li>
-            </ul>
-            <div className="mt-6 rounded-lg border bg-muted p-4 text-sm text-foreground/70">
-              Hoặc xác thực online qua ứng dụng bằng eKYC.
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Booking: Map + List (redesigned) */}
       <section className="bg-gradient-to-b from-muted/60 to-transparent py-16 sm:py-24">
@@ -319,7 +264,7 @@ export default function Index() {
 
       {/* Pickup (Nhận xe) */}
       <section className="container py-16 sm:py-24">
-        <SectionTitle eyebrow="Nhận xe" title="Check-in, ký hợp đồng, bàn giao minh bạch" />
+        <SectionTitle eyebrow="Nh��n xe" title="Check-in, ký hợp đồng, bàn giao minh bạch" />
 
         <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border bg-card">
           <ul className="divide-y">
@@ -423,58 +368,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* History & Personal Analytics */}
-      <section className="container py-16 sm:py-24">
-        <SectionTitle
-          eyebrow="Lịch sử & phân tích cá nhân"
-          title="Theo dõi hành trình và thói quen thuê"
-          desc="Xem lại các chuyến trước, chi phí và thời đi��m thường thuê (giờ cao/thấp điểm)."
-        />
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <div className="rounded-2xl border bg-card p-6 shadow-sm md:col-span-2">
-            <div className="flex items-center justify-between">
-              <h3 className="text-base font-semibold">Phân bổ theo khung giờ</h3>
-              <div className="inline-flex items-center gap-2 rounded-md border bg-background px-2 py-1 text-xs text-foreground/70">
-                <Clock3 className="h-3.5 w-3.5" /> 30 ngày gần đây
-              </div>
-            </div>
-            <div className="mt-4 h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={historyData} margin={{ left: 0, right: 0, top: 10, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.35} />
-                      <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" className="opacity-40" />
-                  <XAxis dataKey="hour" tick={{ fontSize: 12 }} />
-                  <YAxis tick={{ fontSize: 12 }} />
-                  <Tooltip cursor={{ stroke: "#10b981", strokeWidth: 1 }} />
-                  <Area type="monotone" dataKey="trips" stroke="#10b981" fillOpacity={1} fill="url(#g)" />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-          <div className="grid content-start gap-4">
-            <div className="rounded-2xl border bg-card p-6">
-              <p className="text-sm text-foreground/70">Tổng chuyến</p>
-              <p className="mt-1 text-3xl font-bold">24</p>
-              <p className="text-xs text-emerald-700">+12% so với tháng trước</p>
-            </div>
-            <div className="rounded-2xl border bg-card p-6">
-              <p className="text-sm text-foreground/70">Chi phí trung bình</p>
-              <p className="mt-1 text-3xl font-bold">1.45 triệu</p>
-              <p className="text-xs text-emerald-700">-5% nhờ ưu đãi</p>
-            </div>
-            <div className="rounded-2xl border bg-card p-6">
-              <p className="text-sm text-foreground/70">Khung giờ ưa thích</p>
-              <p className="mt-1 text-3xl font-bold">18:00</p>
-              <p className="text-xs text-foreground/60">Giờ cao điểm</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="relative overflow-hidden py-16 sm:py-24">
