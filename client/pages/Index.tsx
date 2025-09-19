@@ -98,7 +98,7 @@ export default function Index() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2F46bb69f0be4d4d71a56798a2d5095ae5%2F0a4ac515902c4ec4a61c247ea95f837b?format=webp&width=1920"
+            src="https://cdn.builder.io/api/v1/image/assets%2F46bb69f0be4d4d71a56798a2d5095ae5%2F10d7c86c7b90416b9f5536dfc05f7728?format=webp&width=1920"
             alt="EV hero"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -231,7 +231,7 @@ export default function Index() {
               <LeafletMap
                 className="aspect-[16/10] bg-white"
                 points={[
-                  { name: "Dịch Vọng Hậu", position: [21.0289, 105.7904] },
+                  { name: "D��ch Vọng Hậu", position: [21.0289, 105.7904] },
                   { name: "Cầu Giấy", position: [21.032, 105.801] },
                   { name: "Trung Hoà", position: [21.0105, 105.8003] },
                   { name: "Q1 TP.HCM", position: [10.776, 106.7009] },
