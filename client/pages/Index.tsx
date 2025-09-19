@@ -97,7 +97,11 @@ export default function Index() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[url('https://cdn.builder.io/api/v1/image/assets%2F46bb69f0be4d4d71a56798a2d5095ae5%2F0a4ac515902c4ec4a61c247ea95f837b?format=webp&width=800')] bg-cover bg-center" />
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F46bb69f0be4d4d71a56798a2d5095ae5%2F0a4ac515902c4ec4a61c247ea95f837b?format=webp&width=1920"
+            alt="EV hero"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="container grid gap-10 py-16 md:grid-cols-2 md:gap-8 md:py-24 items-center">
