@@ -10,6 +10,9 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./components/layout/MainLayout";
 import Placeholder from "./pages/Placeholder";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import { AuthProvider } from "./context/AuthContext";
 
 const queryClient = new QueryClient();
 
@@ -18,20 +21,26 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route index element={<Index />} />
-            <Route path="xe" element={<Placeholder />} />
-            <Route path="dat-xe" element={<Placeholder />} />
-            <Route path="uu-dai" element={<Placeholder />} />
-            <Route path="lien-he" element={<Placeholder />} />
-            <Route path="dang-nhap" element={<Placeholder />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<MainLayout />}>
+              <Route index element={<Index />} />
+              <Route path="xe" element={<Placeholder />} />
+              <Route path="dat-xe" element={<Placeholder />} />
+              <Route path="uu-dai" element={<Placeholder />} />
+              <Route path="lien-he" element={<Placeholder />} />
+              <Route path="dang-nhap" element={<Login />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="tai-khoan" element={<Placeholder />} />
+              <Route path="lich-su" element={<Placeholder />} />
+              <Route path="cai-dat" element={<Placeholder />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
