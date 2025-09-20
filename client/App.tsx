@@ -32,6 +32,7 @@ const App = () => (
               <Route path="uu-dai" element={<Placeholder />} />
               <Route path="lien-he" element={<Placeholder />} />
               <Route path="dang-nhap" element={<Login />} />
+              <Route path="dang-ky" element={<SignUp />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="tai-khoan" element={<Placeholder />} />
               <Route path="lich-su" element={<Placeholder />} />
