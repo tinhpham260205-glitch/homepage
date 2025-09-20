@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { Menu, X, Car, Phone, Percent, Calendar, LogIn, User, LogOut } from "lucide-react";
+import { Menu, X, Car, Phone, Percent, Calendar, LogIn, User, LogOut, Home } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -10,6 +10,7 @@ function classNames(...classes: (string | false | null | undefined)[]) {
 }
 
 const nav = [
+  { to: "/", label: "Trang chủ", icon: Home },
   { to: "/xe", label: "Dòng xe", icon: Car },
   { to: "/dat-xe", label: "Đặt xe", icon: Calendar },
   { to: "/uu-dai", label: "Ưu đãi", icon: Percent },
@@ -118,7 +119,7 @@ export default function MainLayout() {
                 ))}
                 {user ? (
                   <>
-                    <Link to="/tai-khoan" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-muted"><User className="h-4 w-4" /> Tài kho��n cá nhân</Link>
+                    <Link to="/tai-khoan" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-muted"><User className="h-4 w-4" /> Tài khoản cá nhân</Link>
                     <Link to="/lich-su" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-muted"><Calendar className="h-4 w-4" /> Lịch sử thuê xe</Link>
                     <Link to="/cai-dat" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-muted"><Percent className="h-4 w-4" /> Cài đặt</Link>
                     <button onClick={() => { logout(); setOpen(false); }} className="mt-1 inline-flex items-center gap-2 rounded-md bg-destructive px-3 py-2 text-sm font-semibold text-destructive-foreground"><LogOut className="h-4 w-4" /> Đăng xuất</button>
