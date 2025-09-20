@@ -56,6 +56,8 @@ export default function Index() {
     alert(`Đặt xe thành công!\nHình thức: ${mode}\nTừ: ${pickup}\nĐến: ${dropoff}\nNgày: ${date}\nLoại xe: ${type}`);
   }
 
+  const [hoveredCar, setHoveredCar] = useState<number | null>(null);
+
   const cars = [
     {
       name: "Tesla Model 3",
@@ -230,6 +232,7 @@ export default function Index() {
             <div className="lg:col-span-2 overflow-hidden rounded-2xl border bg-card">
               <LeafletMap
                 className="aspect-[16/10] bg-white"
+                activeIndex={hoveredCar ?? undefined}
                 points={[
                   { name: "Dịch Vọng Hậu", position: [21.0289, 105.7904] },
                   { name: "Cầu Giấy", position: [21.032, 105.801] },
@@ -245,22 +248,33 @@ export default function Index() {
             </div>
 
             {/* Car list */}
-            <div className="grid content-start gap-4">
-              {cars.map((c) => (
-                <div key={c.name} className="flex items-center justify-between gap-4 rounded-xl border bg-card p-4 shadow-sm">
-                  <div className="min-w-0">
-                    <h3 className="truncate text-base font-semibold">{c.name}</h3>
-                    <p className="text-xs text-foreground/60">{c.tag}</p>
-                    <div className="mt-2 flex items-center gap-2 text-xs font-medium text-emerald-700">
-                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-1">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> {c.battery}%
-                      </span>
+            <div className="grid content-start gap-4 lg:max-h-[28rem] lg:overflow-y-auto pr-1">
+              {cars.map((c, i) => (
+                <div
+                  key={c.name}
+                  onMouseEnter={() => setHoveredCar(i)}
+                  onMouseLeave={() => setHoveredCar(null)}
+                  className="group rounded-xl border bg-card p-4 shadow-sm transition-shadow hover:shadow-md"
+                >
+                  <div className="flex items-center gap-4">
+                    <img src={c.img} alt={c.name} className="h-16 w-28 rounded-lg object-cover" />
+                    <div className="min-w-0 flex-1">
+                      <h3 className="truncate text-base font-semibold">{c.name}</h3>
+                      <p className="text-xs text-foreground/60">{c.location}</p>
+                      <div className="mt-2 flex items-center gap-3 text-xs">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-1 font-medium text-emerald-700">
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> {c.battery}% pin
+                        </span>
+                        <span className="font-semibold">{c.price}</span>
+                      </div>
                     </div>
                   </div>
-                  <img src={c.img} alt={c.name} className="h-16 w-28 rounded-lg object-cover" />
+                  <div className="mt-3 flex items-center justify-end gap-2">
+                    <button className="inline-flex items-center justify-center rounded-md bg-primary px-3 py-2 text-xs font-semibold text-primary-foreground">Đặt xe ngay</button>
+                    <button className="inline-flex items-center justify-center rounded-md border px-3 py-2 text-xs font-medium hover:bg-muted">Chi tiết</button>
+                  </div>
                 </div>
               ))}
-              <div className="mt-2 self-end text-right text-sm font-semibold">1.400.000 – 1.600.000 đ/ngày</div>
             </div>
           </div>
         </div>
