@@ -53,7 +53,7 @@ export default function Index() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    alert(`Đặt xe thành công!\nHình thức: ${mode}\nTừ: ${pickup}\nĐến: ${dropoff}\nNgày: ${date}\nLoại xe: ${type}`);
+    alert(`Đặt xe thành công!\nHình thức: ${mode}\nT���: ${pickup}\nĐến: ${dropoff}\nNgày: ${date}\nLoại xe: ${type}`);
   }
 
   const [hoveredCar, setHoveredCar] = useState<number | null>(null);
@@ -100,11 +100,11 @@ export default function Index() {
       <section className="relative overflow-hidden min-h-[70vh] md:min-h-[80vh] flex items-center">
         <div className="absolute inset-0 -z-10">
           <img
-            src="https://i.postimg.cc/hP8Dt7gf/Chat-GPT-Image-11-18-03-19-thg-9-2025.png"
+            src="https://images.unsplash.com/photo-1606661344937-6d8f1f9a4a5e?q=80&w=1920&auto=format&fit=crop"
             alt="EV hero"
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-slate-900/20" />
         </div>
         <div className="container grid gap-10 py-16 md:grid-cols-2 md:gap-8 md:py-24 items-center">
           <div>
@@ -113,25 +113,47 @@ export default function Index() {
               Thuê ô tô điện dễ như gọi đồ ăn
             </div>
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-              Thuê xe ô tô điện tiện lợi, xanh và thông minh
+              Thuê Xe Điện <span className="text-emerald-400">Lái Tương Lai</span>
             </h1>
             <p className="mt-4 text-white/80">
-              EVRide mang đến trải nghiệm di chuyển bền vững với đội xe điện hiện đại, giá minh bạch, đặt nhanh trong 30 giây.
+              Truy cập xe điện cao cấp tại các trạm khắp thành phố. Bền vững, giá dễ chịu và luôn sẵn sàng cho hành trình của bạn.
             </p>
             <ul className="mt-6 grid grid-cols-2 gap-2 text-sm text-white/80 sm:max-w-md">
-              <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-600" /> Bảo hiểm toàn diện</li>
-              <li className="flex items-center gap-2"><BatteryCharging className="h-4 w-4 text-emerald-600" /> Sạc miễn phí</li>
-              <li className="flex items-center gap-2"><Leaf className="h-4 w-4 text-emerald-600" /> Không khí sạch</li>
-              <li className="flex items-center gap-2"><Car className="h-4 w-4 text-emerald-600" /> Xe đời mới</li>
+              <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-500" /> Bảo hiểm toàn diện</li>
+              <li className="flex items-center gap-2"><BatteryCharging className="h-4 w-4 text-emerald-500" /> Sạc miễn phí</li>
+              <li className="flex items-center gap-2"><Leaf className="h-4 w-4 text-emerald-500" /> Không khí sạch</li>
+              <li className="flex items-center gap-2"><Car className="h-4 w-4 text-emerald-500" /> Xe đời mới</li>
             </ul>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a href="#tim-tram" className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 font-semibold text-primary-foreground shadow-lg shadow-emerald-200/50 hover:shadow-emerald-300/60">
+                <MapPin className="h-4 w-4" /> Tìm Trạm Xe
+              </a>
+              <a href="#huong-dan" className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/10">
+                Cách Thức Hoạt Động
+              </a>
+            </div>
+            <div className="mt-6 grid grid-cols-3 gap-4 text-white/80 sm:max-w-md">
+              <div>
+                <div className="text-2xl font-extrabold text-white">500+</div>
+                <div className="text-xs">Trạm</div>
+              </div>
+              <div>
+                <div className="text-2xl font-extrabold text-white">50k+</div>
+                <div className="text-xs">Người dùng</div>
+              </div>
+              <div>
+                <div className="text-2xl font-extrabold text-white">99%</div>
+                <div className="text-xs">Hài lòng</div>
+              </div>
+            </div>
           </div>
 
           {/* Booking card */}
           <div className="relative">
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-400 opacity-30 blur-xl" />
-            <form onSubmit={submit} className="relative rounded-2xl border bg-card/80 p-6 shadow-xl backdrop-blur">
+            <form onSubmit={submit} className="relative rounded-2xl border border-white/10 bg-slate-900/80 p-6 text-white shadow-xl backdrop-blur dark:border-border dark:bg-card/80 dark:text-foreground">
               <h3 className="text-lg font-semibold">Đặt xe ngay</h3>
-              <div className="mt-3 inline-flex rounded-md border bg-background p-1 text-xs font-medium">
+              <div className="mt-3 inline-flex rounded-md border border-white/10 bg-slate-900/50 p-1 text-xs font-medium dark:border-border dark:bg-background">
                 {["Đặt trước", "Đến trực tiếp"].map((m) => (
                   <button
                     type="button"
@@ -139,7 +161,7 @@ export default function Index() {
                     onClick={() => setMode(m as typeof mode)}
                     className={
                       "rounded px-3 py-1.5 transition-colors " +
-                      (mode === m ? "bg-emerald-50 text-emerald-700 border border-emerald-300" : "text-foreground/70 hover:bg-muted")
+                      (mode === m ? "bg-emerald-50 text-emerald-700 border border-emerald-300" : "text-foreground/80 hover:bg-muted")
                     }
                   >
                     {m}
@@ -148,7 +170,7 @@ export default function Index() {
               </div>
               <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <label className="grid gap-1 text-sm">
-                  <span className="flex items-center gap-2 text-foreground/70"><MapPin className="h-4 w-4" /> Điểm đón</span>
+                  <span className="flex items-center gap-2 text-foreground/80"><MapPin className="h-4 w-4" /> Điểm đón</span>
                   <select value={pickup} onChange={(e) => setPickup(e.target.value)} className="w-full rounded-md border bg-background px-3 py-2">
                     <option>Hà Nội</option>
                     <option>Đà Nẵng</option>
@@ -156,7 +178,7 @@ export default function Index() {
                   </select>
                 </label>
                 <label className="grid gap-1 text-sm">
-                  <span className="flex items-center gap-2 text-foreground/70"><MapPin className="h-4 w-4" /> Điểm trả</span>
+                  <span className="flex items-center gap-2 text-foreground/80"><MapPin className="h-4 w-4" /> Điểm trả</span>
                   <select value={dropoff} onChange={(e) => setDropoff(e.target.value)} className="w-full rounded-md border bg-background px-3 py-2">
                     <option>Hồ Chí Minh</option>
                     <option>Hà Nội</option>
@@ -164,11 +186,11 @@ export default function Index() {
                   </select>
                 </label>
                 <label className="grid gap-1 text-sm sm:col-span-2">
-                  <span className="flex items-center gap-2 text-foreground/70"><Calendar className="h-4 w-4" /> Ngày nhận xe</span>
+                  <span className="flex items-center gap-2 text-foreground/80"><Calendar className="h-4 w-4" /> Ngày nhận xe</span>
                   <input type="date" required value={date} onChange={(e) => setDate(e.target.value)} className="w-full rounded-md border bg-background px-3 py-2" />
                 </label>
                 <label className="grid gap-1 text-sm sm:col-span-2">
-                  <span className="text-foreground/70">Loại xe</span>
+                  <span className="text-foreground/80">Loại xe</span>
                   <div className="grid grid-cols-3 gap-2">
                     {["Sedan điện", "SUV điện", "Compact"].map((t) => (
                       <button
@@ -189,7 +211,7 @@ export default function Index() {
               <button type="submit" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 font-semibold text-primary-foreground shadow-lg shadow-emerald-200/60 hover:shadow-emerald-300/60">
                 Tìm xe phù hợp <ChevronRight className="h-4 w-4" />
               </button>
-              <p className="mt-2 text-center text-xs text-foreground/60">Không phí ẩn, hủy miễn phí trong 24h</p>
+              <p className="mt-2 text-center text-xs text-foreground/70">Không phí ẩn, hủy miễn phí trong 24h</p>
             </form>
           </div>
         </div>
@@ -197,7 +219,7 @@ export default function Index() {
 
 
       {/* Booking: Map + List (redesigned) */}
-      <section className="bg-gradient-to-b from-muted/60 to-transparent py-16 sm:py-24">
+      <section id="tim-tram" className="bg-gradient-to-b from-muted/60 to-transparent py-16 sm:py-24">
         <div className="container">
           <SectionTitle eyebrow="Đặt xe" title="Tìm điểm thuê trên bản đồ & xe có sẵn" />
 
@@ -281,7 +303,7 @@ export default function Index() {
       </section>
 
       {/* Pickup (Nhận xe) */}
-      <section className="container py-16 sm:py-24">
+      <section id="huong-dan" className="container py-16 sm:py-24">
         <SectionTitle eyebrow="Nhận xe" title="Check-in, ký hợp đồng, bàn giao minh bạch" />
 
         <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border bg-card">
