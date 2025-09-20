@@ -12,6 +12,7 @@ import MainLayout from "./components/layout/MainLayout";
 import Placeholder from "./pages/Placeholder";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import { AuthProvider } from "./context/AuthContext";
 
 const queryClient = new QueryClient();
