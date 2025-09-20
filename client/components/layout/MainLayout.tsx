@@ -1,6 +1,9 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { Menu, X, Car, Phone, Percent, Calendar, LogIn } from "lucide-react";
+import { Menu, X, Car, Phone, Percent, Calendar, LogIn, User, LogOut } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 function classNames(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(" ");
@@ -15,6 +18,7 @@ const nav = [
 
 export default function MainLayout() {
   const [open, setOpen] = useState(false);
+  const { user, logout } = useAuth();
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-background/70">
@@ -43,13 +47,41 @@ export default function MainLayout() {
                 {item.label}
               </NavLink>
             ))}
-            <Link
-              to="/dang-nhap"
-              className="ml-2 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-emerald-200/50 hover:shadow-emerald-300/50 transition-shadow"
-            >
-              <LogIn className="h-4 w-4" />
-              Đăng nhập
-            </Link>
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger className="ml-2 inline-flex items-center gap-2 rounded-md border px-3 py-2 text-sm font-medium hover:bg-muted">
+                  <Avatar className="h-6 w-6">
+                    <AvatarFallback>{user.name.slice(0,1).toUpperCase()}</AvatarFallback>
+                  </Avatar>
+                  {user.name}
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuLabel>Tài khoản</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link to="/tai-khoan" className="flex items-center gap-2"><User className="h-4 w-4" /> Tài khoản cá nhân</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/lich-su" className="flex items-center gap-2"><Calendar className="h-4 w-4" /> Lịch sử thuê xe</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/cai-dat" className="flex items-center gap-2"><Percent className="h-4 w-4" /> Cài đặt</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={logout} className="text-red-600">
+                    <LogOut className="mr-2 h-4 w-4" /> Đăng xuất
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                to="/dang-nhap"
+                className="ml-2 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-emerald-200/50 hover:shadow-emerald-300/50 transition-shadow"
+              >
+                <LogIn className="h-4 w-4" />
+                Đăng nhập
+              </Link>
+            )}
           </nav>
 
           <button
@@ -84,14 +116,23 @@ export default function MainLayout() {
                     {item.label}
                   </NavLink>
                 ))}
-                <Link
-                  to="/dang-nhap"
-                  onClick={() => setOpen(false)}
-                  className="mt-1 inline-flex items-center gap-2 rounded-md bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground"
-                >
-                  <LogIn className="h-4 w-4" />
-                  ��ăng nhập
-                </Link>
+                {user ? (
+                  <>
+                    <Link to="/tai-khoan" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-muted"><User className="h-4 w-4" /> Tài kho��n cá nhân</Link>
+                    <Link to="/lich-su" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-muted"><Calendar className="h-4 w-4" /> Lịch sử thuê xe</Link>
+                    <Link to="/cai-dat" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-muted"><Percent className="h-4 w-4" /> Cài đặt</Link>
+                    <button onClick={() => { logout(); setOpen(false); }} className="mt-1 inline-flex items-center gap-2 rounded-md bg-destructive px-3 py-2 text-sm font-semibold text-destructive-foreground"><LogOut className="h-4 w-4" /> Đăng xuất</button>
+                  </>
+                ) : (
+                  <Link
+                    to="/dang-nhap"
+                    onClick={() => setOpen(false)}
+                    className="mt-1 inline-flex items-center gap-2 rounded-md bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground"
+                  >
+                    <LogIn className="h-4 w-4" />
+                    Đăng nhập
+                  </Link>
+                )}
               </div>
             </div>
           </div>
